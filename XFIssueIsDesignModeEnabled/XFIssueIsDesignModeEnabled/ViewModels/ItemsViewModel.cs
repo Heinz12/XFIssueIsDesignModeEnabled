@@ -34,6 +34,8 @@ namespace XFIssueIsDesignModeEnabled.ViewModels
         {
             IsBusy = true;
 
+            await Task.Delay(3000);     // dummy delay used to reproduce hanging of RefreshView Indicator on iOS
+
             try
             {
                 Items.Clear();
