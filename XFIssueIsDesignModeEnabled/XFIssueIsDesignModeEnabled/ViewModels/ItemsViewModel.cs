@@ -23,18 +23,39 @@ namespace XFIssueIsDesignModeEnabled.ViewModels
         {
             Title = "Browse";
             Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(), canExecute: () => !IsRefreshing);
 
             ItemTapped = new Command<Item>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
         }
 
+        int count = 0;
+        public int Count
+        {
+            get { return count; }
+            set { SetProperty(ref count, value); }
+        }
+        bool isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return isRefreshing; }
+            set
+            {
+                if (SetProperty(ref isRefreshing, value))
+                {
+                    AddItemCommand?.ChangeCanExecute();
+                }
+            }
+        }
         async Task ExecuteLoadItemsCommand()
         {
-            IsBusy = true;
+            //IsBusy = true;
+            //IsRefreshing = true;
+            ++Count;
 
             await Task.Delay(3000);     // dummy delay used to reproduce hanging of RefreshView Indicator on iOS
+            Debug.WriteLine($"ExecuteLoadItemsCommand: count={Count:00}");
 
             try
             {
@@ -52,6 +73,7 @@ namespace XFIssueIsDesignModeEnabled.ViewModels
             finally
             {
                 IsBusy = false;
+                IsRefreshing = false;
             }
         }
 
