@@ -23,7 +23,7 @@ namespace XFIssueIsDesignModeEnabled.ViewModels
         {
             Title = "Browse";
             Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(), canExecute: () => !IsRefreshing);
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand()/*, canExecute: () => !IsRefreshing*/);
 
             ItemTapped = new Command<Item>(OnItemSelected);
 
