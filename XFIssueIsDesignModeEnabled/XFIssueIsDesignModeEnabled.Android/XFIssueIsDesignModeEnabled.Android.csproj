@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -88,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XFIssueIsDesignModeEnabled\XFIssueIsDesignModeEnabled.csproj">
-      <Project>{DB328ABE-3922-49BA-BA9D-48C778BC6198}</Project>
+      <Project>{410F570D-EC03-4995-8A44-CC4BBBB8FBC9}</Project>
       <Name>XFIssueIsDesignModeEnabled</Name>
     </ProjectReference>
   </ItemGroup>
